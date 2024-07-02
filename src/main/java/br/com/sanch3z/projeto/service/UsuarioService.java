@@ -13,30 +13,30 @@ import br.com.sanch3z.projeto.repository.UsuarioRepository;
 public class UsuarioService {
 	
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioRepository UsuarioRepository;
 	
 	public List<UsuarioDTO> ListarTodos(){
-		List<UsuarioEntity> usuarios = usuarioRepository.findAll();
-		return usuarios.stream().map(UsuarioDTO::new).toList();	
+		List<UsuarioEntity> Usuarios = UsuarioRepository.findAll();
+		return Usuarios.stream().map(UsuarioDTO::new).toList();	
 	}
 	
-	public void inserir(UsuarioDTO usuario) {
-		UsuarioEntity usuarioEntity = new UsuarioEntity(usuario);
-		usuarioRepository.save(usuarioEntity);
+	public void inserir(UsuarioDTO Usuario) {
+		UsuarioEntity UsuarioEntity = new UsuarioEntity(Usuario);
+		UsuarioRepository.save(UsuarioEntity);
 	}
 	
-	public UsuarioDTO alterar(UsuarioDTO usuario) {
-		UsuarioEntity usuarioEntity = new UsuarioEntity(usuario);
-		return new UsuarioDTO(usuarioRepository.save(usuarioEntity));
+	public UsuarioDTO alterar(UsuarioDTO Usuario) {
+		UsuarioEntity UsuarioEntity = new UsuarioEntity(Usuario);
+		return new UsuarioDTO(UsuarioRepository.save(UsuarioEntity));
 	}
 	
 	public void excluir(Long id) {
-		UsuarioEntity usuario = usuarioRepository.findById(id).get();
-		usuarioRepository.delete(usuario);
+		UsuarioEntity Usuario = UsuarioRepository.findById(id).get();
+		UsuarioRepository.delete(Usuario);
 	}
 	
 	public UsuarioDTO buscarPorId(Long id) {
-		return new UsuarioDTO(usuarioRepository.findById(id).get());
+		return new UsuarioDTO(UsuarioRepository.findById(id).get());
 	}
 	
 	
